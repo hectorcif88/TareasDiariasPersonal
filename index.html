@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Tareas - Hector Cifuentes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+
+        .header .date {
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .stat-card p {
+            color: #555;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 57%;
+        }
+
+        .tasks-section h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.9em;
+            font-weight: 700;
+        }
+
+        .tasks-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tasks-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tasks-table th {
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .tasks-table td {
+            padding: 16px 18px;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .tasks-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tasks-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .task-number {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .task-desc {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .task-date {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .status-realizado {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-pendiente {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .estado-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .estado-en-curso {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 25px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #eee;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .tasks-table {
+                font-size: 0.9em;
+            }
+
+            .tasks-table th,
+            .tasks-table td {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Dashboard de Tareas</h1>
+            <p><strong>Hector Cifuentes</strong></p>
+            <p class="date">Actualizado: 22 de abril de 2026</p>
+        </div>
+
+        <div class="content">
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>7</h3>
+                    <p>Total de Tareas</p>
+                </div>
+                <div class="stat-card">
+                    <h3>4</h3>
+                    <p>Tareas Realizadas</p>
+                </div>
+                <div class="stat-card">
+                    <h3>3</h3>
+                    <p>Tareas Pendientes</p>
+                </div>
+                <div class="stat-card">
+                    <h3>57%</h3>
+                    <p>Progreso Completado</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tasks-section">
+                <h2>📋 Detalle de Tareas</h2>
+                <table class="tasks-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%">#</th>
+                            <th style="width: 50%">Descripción</th>
+                            <th style="width: 15%">Vencimiento</th>
+                            <th style="width: 15%">Realizado</th>
+                            <th style="width: 15%">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="task-number">4</td>
+                            <td class="task-desc">Compartir con Glen la confirmación email OTA TSMCC (Eddie)</td>
+                            <td class="task-date">2026-04-22</td>
+                            <td><span class="status-badge status-realizado">✓ Sí</span></td>
+                            <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                        </tr>
+                        <tr>
+                            <td class="task-number">5</td>
+                            <td class="task-desc">Solicitar stream faltante El Salvador</td>
+                            <td class="task-date">2026-04-24</td>
+                            <td><span class="status-badge status-pendiente">No</span></td>
+                            <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                        </tr>
+                        <tr>
+                            <td class="task-number">6</td>
+                            <td class="task-desc">Insistir con Eduardo para confirmar loader customization</td>
+                            <td class="task-date">2026-04-24</td>
+                            <td><span class="status-badge status-realizado">✓ Sí</span></td>
+                            <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                        </tr>
+                        <tr>
+                            <td class="task-number">7</td>
+                            <td class="task-desc">Investigar avance SBI Paraguay con Axitos</td>
+                            <td class="task-date">2026-04-22</td>
+                            <td><span class="status-badge status-pendiente">No</span></td>
+                            <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                        </tr>
+                        <tr>
+                            <td class="task-number">10</td>
+                            <td class="task-desc">Monitorear field test Guatemala (PG2142)</td>
+                            <td class="task-date">2026-04-30</td>
+                            <td><span class="status-badge status-realizado">✓ Sí</span></td>
+                            <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                        </tr>
+                        <tr>
+                            <td class="task-number">14</td>
+                            <td class="task-desc">Cargar firmware debug PG2141 (no internet/crash)</td>
+                            <td class="task-date">2026-04-22</td>
+                            <td><span class="status-badge status-realizado">✓ Sí</span></td>
+                            <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                        </tr>
+                        <tr>
+                            <td class="task-number">17</td>
+                            <td class="task-desc">Seguimiento Tigo Honduras (no-social-media calls)</td>
+                            <td class="task-date">TBD</td>
+                            <td><span class="status-badge status-pendiente">No</span></td>
+                            <td><span class="status-badge status-pendiente">Pendiente</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📈 Sistema de Seguimiento de Tareas Diarias | Hector Cifuentes | LATAM Team</p>
+        </div>
+    </div>
+</body>
+</html>

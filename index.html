@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             background: white;
             border-radius: 12px;
@@ -100,7 +100,6 @@
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            width: 57%;
         }
 
         .tasks-section h2 {
@@ -193,6 +192,25 @@
             color: #856404;
         }
 
+        .estado-pendiente {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .col-hist {
+            background: #f0f4ff;
+        }
+
+        .week-banner {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 12px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+            color: #444;
+            font-size: 0.95em;
+        }
+
         .footer {
             background: #f8f9fa;
             padding: 25px;
@@ -227,93 +245,105 @@
         <div class="header">
             <h1>📊 Dashboard de Tareas</h1>
             <p><strong>Hector Cifuentes</strong></p>
-            <p class="date">Actualizado: 22 de abril de 2026</p>
+            <p class="date">Actualizado: 23 de abril de 2026 | 08:00 am</p>
         </div>
 
         <div class="content">
+            <div class="week-banner">
+                📅 Semana de: 2026-04-21 &nbsp;|&nbsp; Minuta: LATAM Weekly Sync-up &nbsp;|&nbsp; Responsable: Hector Cifuentes
+            </div>
+
             <div class="stats">
                 <div class="stat-card">
                     <h3>7</h3>
                     <p>Total de Tareas</p>
                 </div>
                 <div class="stat-card">
-                    <h3>4</h3>
-                    <p>Tareas Realizadas</p>
+                    <h3>0</h3>
+                    <p>Realizadas Hoy (Jue 23)</p>
                 </div>
                 <div class="stat-card">
-                    <h3>3</h3>
-                    <p>Tareas Pendientes</p>
+                    <h3>5</h3>
+                    <p>Realizadas Ayer (Mié 22)</p>
                 </div>
                 <div class="stat-card">
-                    <h3>57%</h3>
-                    <p>Progreso Completado</p>
+                    <h3>71%</h3>
+                    <p>Progreso Miércoles 22</p>
                     <div class="progress-bar">
-                        <div class="progress-fill"></div>
+                        <div class="progress-fill" style="width: 71%;"></div>
                     </div>
                 </div>
             </div>
 
             <div class="tasks-section">
-                <h2>📋 Detalle de Tareas</h2>
+                <h2>📋 Detalle de Tareas — Jueves 23 de Abril</h2>
                 <table class="tasks-table">
                     <thead>
                         <tr>
-                            <th style="width: 5%">#</th>
-                            <th style="width: 50%">Descripción</th>
-                            <th style="width: 15%">Vencimiento</th>
-                            <th style="width: 15%">Realizado</th>
-                            <th style="width: 15%">Estado</th>
+                            <th style="width: 4%">#</th>
+                            <th style="width: 40%">Descripción</th>
+                            <th style="width: 11%">Vencimiento</th>
+                            <th style="width: 10%">Estado</th>
+                            <th style="width: 10%">Realizado</th>
+                            <th style="width: 10%" class="col-hist">Mié 22</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="task-number">4</td>
-                            <td class="task-desc">Compartir con Glen la confirmación email OTA TSMCC (Eddie)</td>
+                            <td class="task-desc">Compartir con Glen la confirmación por email sobre el OTA TSMCC solicitado por Eddie</td>
                             <td class="task-date">2026-04-22</td>
-                            <td><span class="status-badge status-realizado">✓ Sí</span></td>
-                            <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                            <td><span class="estado-badge estado-pendiente">Pendiente</span></td>
+                            <td><span class="status-badge status-pendiente">No</span></td>
+                            <td class="col-hist"><span class="status-badge status-pendiente">No</span></td>
                         </tr>
                         <tr>
                             <td class="task-number">5</td>
-                            <td class="task-desc">Solicitar stream faltante El Salvador</td>
+                            <td class="task-desc">Solicitar de nuevo el stream faltante de El Salvador y hacer seguimiento para recibirlo esta semana</td>
                             <td class="task-date">2026-04-24</td>
-                            <td><span class="status-badge status-pendiente">No</span></td>
                             <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                            <td><span class="status-badge status-pendiente">No</span></td>
+                            <td class="col-hist"><span class="status-badge status-realizado">✓ Sí</span></td>
                         </tr>
                         <tr>
                             <td class="task-number">6</td>
-                            <td class="task-desc">Insistir con Eduardo para confirmar loader customization</td>
+                            <td class="task-desc">Insistir con Eduardo para obtener la confirmación del loader customization</td>
                             <td class="task-date">2026-04-24</td>
-                            <td><span class="status-badge status-realizado">✓ Sí</span></td>
                             <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                            <td><span class="status-badge status-pendiente">No</span></td>
+                            <td class="col-hist"><span class="status-badge status-realizado">✓ Sí</span></td>
                         </tr>
                         <tr>
                             <td class="task-number">7</td>
-                            <td class="task-desc">Investigar avance SBI Paraguay con Axitos</td>
+                            <td class="task-desc">Investigar con el ingeniero de Axitos el porcentaje de avance del SBI en Paraguay y reportar a Glen</td>
                             <td class="task-date">2026-04-22</td>
-                            <td><span class="status-badge status-pendiente">No</span></td>
                             <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                            <td><span class="status-badge status-pendiente">No</span></td>
+                            <td class="col-hist"><span class="status-badge status-realizado">✓ Sí</span></td>
                         </tr>
                         <tr>
                             <td class="task-number">10</td>
-                            <td class="task-desc">Monitorear field test Guatemala (PG2142)</td>
+                            <td class="task-desc">Monitorear el field test de Guatemala (PG2142) hasta su finalización prevista y reportar cualquier issue</td>
                             <td class="task-date">2026-04-30</td>
-                            <td><span class="status-badge status-realizado">✓ Sí</span></td>
                             <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                            <td><span class="status-badge status-pendiente">No</span></td>
+                            <td class="col-hist"><span class="status-badge status-realizado">✓ Sí</span></td>
                         </tr>
                         <tr>
                             <td class="task-number">14</td>
-                            <td class="task-desc">Cargar firmware debug PG2141 (no internet/crash)</td>
+                            <td class="task-desc">Cargar en el sample el nuevo firmware de debug para el issue de 'no internet / crash' del PG2141 y probarlo mañana</td>
                             <td class="task-date">2026-04-22</td>
-                            <td><span class="status-badge status-realizado">✓ Sí</span></td>
                             <td><span class="estado-badge estado-en-curso">En curso</span></td>
+                            <td><span class="status-badge status-pendiente">No</span></td>
+                            <td class="col-hist"><span class="status-badge status-realizado">✓ Sí</span></td>
                         </tr>
                         <tr>
                             <td class="task-number">17</td>
-                            <td class="task-desc">Seguimiento Tigo Honduras (no-social-media calls)</td>
+                            <td class="task-desc">Hacer seguimiento con Tigo Honduras para obtener evidencias/logs de las 'no-social-media calls' y abrir ticket JIRA</td>
                             <td class="task-date">TBD</td>
+                            <td><span class="estado-badge estado-pendiente">Pendiente</span></td>
                             <td><span class="status-badge status-pendiente">No</span></td>
-                            <td><span class="status-badge status-pendiente">Pendiente</span></td>
+                            <td class="col-hist"><span class="status-badge status-pendiente">No</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -321,7 +351,7 @@
         </div>
 
         <div class="footer">
-            <p>📈 Sistema de Seguimiento de Tareas Diarias | Hector Cifuentes | LATAM Team</p>
+            <p>📈 Sistema de Seguimiento de Tareas Diarias | Hector Cifuentes | LATAM Team | Semana 2026-04-21</p>
         </div>
     </div>
 </body>

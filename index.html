@@ -74,11 +74,12 @@
             font-size: 0.82em;
             font-weight: 600;
         }
-        .badge-si    { background: #d4edda; color: #155724; }
-        .badge-no    { background: #f8d7da; color: #721c24; }
-        .badge-en-curso  { background: #fff3cd; color: #856404; }
-        .badge-pendiente { background: #f8d7da; color: #721c24; }
-        .badge-pausa     { background: #e2e3e5; color: #383d41; }
+        .badge-si         { background: #d4edda; color: #155724; }
+        .badge-no         { background: #f8d7da; color: #721c24; }
+        .badge-en-curso   { background: #fff3cd; color: #856404; }
+        .badge-pendiente  { background: #f8d7da; color: #721c24; }
+        .badge-pausa      { background: #e2e3e5; color: #383d41; }
+        .badge-finalizado { background: #d1ecf1; color: #0c5460; }
         .col-hist { background: #f4f6fb; }
         .week-banner {
             background: #f0f4ff;
@@ -110,7 +111,7 @@
     <div class="header">
         <h1>📊 Dashboard de Tareas</h1>
         <p><strong>Hector Cifuentes</strong></p>
-        <p class="date">Actualizado: 24 de abril de 2026 | 08:00 am</p>
+        <p class="date">Actualizado: 24 de abril de 2026</p>
     </div>
 
     <div class="content">
@@ -124,7 +125,7 @@
                 <p>Total de Tareas</p>
             </div>
             <div class="stat-card">
-                <h3>0</h3>
+                <h3>6</h3>
                 <p>Realizadas Hoy (Vie 24)</p>
             </div>
             <div class="stat-card">
@@ -136,10 +137,10 @@
                 <p>Realizadas Mié 22</p>
             </div>
             <div class="stat-card">
-                <h3>0%</h3>
+                <h3>75%</h3>
                 <p>Progreso Hoy</p>
                 <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%;"></div>
+                    <div class="progress-fill" style="width: 75%;"></div>
                 </div>
             </div>
         </div>
@@ -150,9 +151,9 @@
                 <thead>
                     <tr>
                         <th style="width:4%">#</th>
-                        <th style="width:38%">Descripción</th>
+                        <th style="width:37%">Descripción</th>
                         <th style="width:9%">Vencimiento</th>
-                        <th style="width:10%">Estado</th>
+                        <th style="width:11%">Estado</th>
                         <th style="width:9%">Realizado</th>
                         <th style="width:9%" class="col-hist">Mié 22</th>
                         <th style="width:9%" class="col-hist">Jue 23</th>
@@ -163,7 +164,7 @@
                         <td class="task-number">4</td>
                         <td class="task-desc">Compartir con Glen la confirmación por email sobre el OTA TSMCC solicitado por Eddie</td>
                         <td class="task-date">2026-04-22</td>
-                        <td><span class="badge badge-en-curso">En curso</span></td>
+                        <td><span class="badge badge-finalizado">✔ Finalizado</span></td>
                         <td><span class="badge badge-no">No</span></td>
                         <td class="col-hist"><span class="badge badge-no">No</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
@@ -173,7 +174,7 @@
                         <td class="task-desc">Solicitar de nuevo el stream faltante de El Salvador y hacer seguimiento para recibirlo esta semana</td>
                         <td class="task-date">2026-04-24</td>
                         <td><span class="badge badge-en-curso">En curso</span></td>
-                        <td><span class="badge badge-no">No</span></td>
+                        <td><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
                     </tr>
@@ -182,7 +183,7 @@
                         <td class="task-desc">Insistir con Eduardo para obtener la confirmación del loader customization</td>
                         <td class="task-date">2026-04-24</td>
                         <td><span class="badge badge-en-curso">En curso</span></td>
-                        <td><span class="badge badge-no">No</span></td>
+                        <td><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge badge-no">No</span></td>
                     </tr>
@@ -191,7 +192,7 @@
                         <td class="task-desc">Investigar con el ingeniero de Axitos el porcentaje de avance del SBI en Paraguay y reportar a Glen</td>
                         <td class="task-date">2026-04-22</td>
                         <td><span class="badge badge-en-curso">En curso</span></td>
-                        <td><span class="badge badge-no">No</span></td>
+                        <td><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
                     </tr>
@@ -200,7 +201,7 @@
                         <td class="task-desc">Monitorear el field test de Guatemala (PG2142) hasta su finalización prevista y reportar cualquier issue</td>
                         <td class="task-date">2026-04-30</td>
                         <td><span class="badge badge-en-curso">En curso</span></td>
-                        <td><span class="badge badge-no">No</span></td>
+                        <td><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
                     </tr>
@@ -209,7 +210,7 @@
                         <td class="task-desc">Cargar en el sample el nuevo firmware de debug para el issue de 'no internet / crash' del PG2141 y probarlo mañana</td>
                         <td class="task-date">2026-04-22</td>
                         <td><span class="badge badge-en-curso">En curso</span></td>
-                        <td><span class="badge badge-no">No</span></td>
+                        <td><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
                     </tr>
@@ -227,7 +228,7 @@
                         <td class="task-desc">Seguimiento homologación PG2142 Nicaragua</td>
                         <td class="task-date">2026-04-30</td>
                         <td><span class="badge badge-pausa">Pausa</span></td>
-                        <td><span class="badge badge-no">No</span></td>
+                        <td><span class="badge badge-si">✓ Sí</span></td>
                         <td class="col-hist"><span class="badge" style="background:#f0f0f0;color:#888;">—</span></td>
                         <td class="col-hist"><span class="badge badge-si">✓ Sí</span></td>
                     </tr>

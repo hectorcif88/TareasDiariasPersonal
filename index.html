@@ -15,7 +15,6 @@
         .content { padding: 40px; }
         .week-banner { background: #f0f4ff; border-left: 5px solid #667eea; padding: 12px 20px; margin-bottom: 30px; border-radius: 0 8px 8px 0; color: #444; font-size: 0.92em; }
         .week-banner span { font-weight: 700; color: #667eea; }
-        .new-week-badge { display: inline-block; background: #667eea; color: white; border-radius: 12px; padding: 2px 12px; font-size: 0.8em; font-weight: 700; margin-left: 8px; }
         .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 18px; margin-bottom: 40px; }
         .stat-card { background: #f8f9fb; padding: 22px 16px; border-radius: 12px; text-align: center; border-top: 4px solid #667eea; }
         .stat-card h3 { color: #667eea; font-size: 2.2em; margin-bottom: 6px; font-weight: 800; }
@@ -40,12 +39,18 @@
         .badge-si { background: #d4edda; color: #155724; }
         .badge-no { background: #f8d7da; color: #721c24; }
         .badge-en-curso { background: #fff3cd; color: #856404; }
+        .badge-finalizado { background: #d1ecf1; color: #0c5460; }
+        .badge-pendiente { background: #e2e3e5; color: #383d41; }
+        .badge-pausa { background: #fce8d0; color: #7a4100; }
         .col-today { background: rgba(255,248,225,0.6); }
         .col-today-header { background: rgba(255,193,7,0.3) !important; color: #333 !important; }
+        .col-hist-header { background: rgba(118,75,162,0.5) !important; color: white !important; }
         .date-venc { font-size: 0.82em; color: #888; text-align: center; white-space: nowrap; }
         .date-venc.overdue { color: #c0392b; font-weight: 700; }
         .footer { background: #f8f9fb; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; font-size: 0.82em; color: #888; }
         .footer strong { color: #667eea; }
+        .drive-link { display: inline-block; margin-top: 18px; background: #fff; border-radius: 8px; padding: 8px 18px; font-size: 0.88em; color: #667eea; font-weight: 700; text-decoration: none; border: 2px solid #667eea; }
+        .drive-link:hover { background: #667eea; color: white; }
     </style>
 </head>
 <body>
@@ -53,72 +58,114 @@
     <div class="header">
         <h1>&#128202; Dashboard de Seguimiento</h1>
         <p class="subtitle"><strong>Hector Cifuentes</strong> &nbsp;&mdash;&nbsp; Responsable LATAM</p>
-        <div class="date-badge">&#128197; Miércoles, 29 de Abril de 2026 &nbsp;|&nbsp; Inicio de Semana</div>
+        <div class="date-badge">&#128197; Jueves, 30 de Abril de 2026</div>
+        <br>
+        <a class="drive-link" href="https://drive.google.com/file/d/1iTlGJ7jA5seYRhxg2bVKntQvwqOu5o3Z/view?usp=drivesdk" target="_blank">&#128190; Ver Excel en Google Drive</a>
     </div>
     <div class="content">
         <div class="week-banner">
             <span>&#128337; Semana 2026-04-28</span>
             &nbsp;|&nbsp; Referencia: LATAM Weekly Sync-up &nbsp;|&nbsp; Responsable: Hector Cifuentes
-            <span class="new-week-badge">&#10024; Nueva Semana</span>
         </div>
         <div class="stats">
-            <div class="stat-card"><h3>3</h3><p>Total Tareas</p></div>
-            <div class="stat-card" style="border-top-color:#1D9E75"><h3 style="color:#1D9E75">3</h3><p>En Curso</p></div>
-            <div class="stat-card" style="border-top-color:#155724"><h3 style="color:#155724">1</h3><p>Realizadas Hoy</p></div>
-            <div class="stat-card"><h3>33%</h3><p>Progreso Hoy</p></div>
+            <div class="stat-card"><h3>8</h3><p>Total Tareas</p></div>
+            <div class="stat-card" style="border-top-color:#856404"><h3 style="color:#856404">5</h3><p>En Curso</p></div>
+            <div class="stat-card" style="border-top-color:#0c5460"><h3 style="color:#0c5460">1</h3><p>Finalizado</p></div>
+            <div class="stat-card" style="border-top-color:#383d41"><h3 style="color:#383d41">1</h3><p>Pendiente</p></div>
+            <div class="stat-card" style="border-top-color:#7a4100"><h3 style="color:#7a4100">1</h3><p>En Pausa</p></div>
+            <div class="stat-card"><h3>0%</h3><p>Progreso Hoy</p></div>
         </div>
         <div class="progress-section">
-            <h3>&#9989; Progreso del día — Miércoles 29 Abr</h3>
-            <div class="progress-bar"><div class="progress-fill" style="width:33%"></div></div>
-            <div class="progress-label"><span>1 de 3 tareas completadas hoy</span><span>33%</span></div>
+            <h3>&#9989; Progreso del día — Jueves 30 Abr</h3>
+            <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+            <div class="progress-label"><span>0 de 8 tareas completadas hoy</span><span>0% &mdash; Inicio del día</span></div>
         </div>
         <div class="tasks-section">
-            <h2>&#128203; Detalle de Tareas — Miércoles 29 de Abril</h2>
+            <h2>&#128203; Detalle de Tareas — Jueves 30 de Abril de 2026</h2>
             <table class="tasks-table">
                 <thead>
                     <tr>
-                        <th style="width:5%">#</th>
-                        <th style="width:45%">Descripción</th>
-                        <th style="width:12%">Vencimiento</th>
-                        <th style="width:12%">Estado</th>
-                        <th class="col-today-header" style="width:13%">Realizado/Pendiente</th>
-                        <th class="col-today-header" style="width:10%">Mié 29</th>
+                        <th style="width:4%">#</th>
+                        <th style="width:44%">Descripción</th>
+                        <th style="width:11%">Vencimiento</th>
+                        <th style="width:11%">Estado</th>
+                        <th class="col-today-header" style="width:16%">Realizado/Pendiente</th>
+                        <th class="col-hist-header" style="width:10%">Mié 29</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="task-number">1</td>
-                        <td class="task-desc">Homologación Panama PG2142 FW 4.1.20</td>
-                        <td class="date-venc">2026-05-15</td>
-                        <td><span class="badge badge-en-curso">&#9654; En curso</span></td>
-                        <td class="col-today" style="text-align:center"><span class="badge badge-si">&#10003; Sí</span></td>
-                        <td class="col-today" style="text-align:center"><span class="badge badge-si">&#10003; Sí</span></td>
+                        <td class="task-number">4</td>
+                        <td class="task-desc">Compartir con Glen la confirmación por email sobre el OTA TSMCC solicitado por Eddie</td>
+                        <td class="date-venc overdue">2026-04-22</td>
+                        <td><span class="badge badge-finalizado">&#10003; Finalizado</span></td>
+                        <td class="col-today" style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                        <td style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
                     </tr>
                     <tr>
                         <td class="task-number">5</td>
                         <td class="task-desc">Solicitar de nuevo el stream faltante de El Salvador y hacer seguimiento para recibirlo</td>
                         <td class="date-venc overdue">2026-04-24</td>
                         <td><span class="badge badge-en-curso">&#9654; En curso</span></td>
-                        <td class="col-today" style="text-align:center"><span class="badge badge-no">No</span></td>
-                        <td class="col-today" style="text-align:center"><span class="badge badge-no">No</span></td>
+                        <td class="col-today" style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                        <td style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                    </tr>
+                    <tr>
+                        <td class="task-number">6</td>
+                        <td class="task-desc">Insistir con Eduardo para obtener la confirmación del loader customization</td>
+                        <td class="date-venc overdue">2026-04-24</td>
+                        <td><span class="badge badge-en-curso">&#9654; En curso</span></td>
+                        <td class="col-today" style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                        <td style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                    </tr>
+                    <tr>
+                        <td class="task-number">7</td>
+                        <td class="task-desc">Investigar con el ingeniero de Axitos el porcentaje de avance del SBI en Paraguay y reportar a Glen</td>
+                        <td class="date-venc overdue">2026-04-22</td>
+                        <td><span class="badge badge-en-curso">&#9654; En curso</span></td>
+                        <td class="col-today" style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                        <td style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
                     </tr>
                     <tr>
                         <td class="task-number">10</td>
                         <td class="task-desc">Monitorear el field test de Guatemala (PG2142) hasta su finalización prevista y reportar cualquier issue</td>
-                        <td class="date-venc">2026-04-30</td>
+                        <td class="date-venc overdue">2026-04-30</td>
                         <td><span class="badge badge-en-curso">&#9654; En curso</span></td>
-                        <td class="col-today" style="text-align:center"><span class="badge badge-no">No</span></td>
-                        <td class="col-today" style="text-align:center"><span class="badge badge-no">No</span></td>
+                        <td class="col-today" style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                        <td style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                    </tr>
+                    <tr>
+                        <td class="task-number">14</td>
+                        <td class="task-desc">Cargar en el sample el nuevo firmware de debug para el issue de 'no internet/crash' del PG2141 y probarlo</td>
+                        <td class="date-venc overdue">2026-04-22</td>
+                        <td><span class="badge badge-en-curso">&#9654; En curso</span></td>
+                        <td class="col-today" style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                        <td style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                    </tr>
+                    <tr>
+                        <td class="task-number">17</td>
+                        <td class="task-desc">Hacer seguimiento con Tigo Honduras para obtener evidencias/logs de las 'no-social-media calls' y abrir ticket JIRA</td>
+                        <td class="date-venc">TBD</td>
+                        <td><span class="badge badge-pendiente">&#9685; Pendiente</span></td>
+                        <td class="col-today" style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                        <td style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                    </tr>
+                    <tr>
+                        <td class="task-number">18</td>
+                        <td class="task-desc">Seguimiento homologación PG2142 Nicaragua</td>
+                        <td class="date-venc overdue">2026-04-30</td>
+                        <td><span class="badge badge-pausa">&#9646; Pausa</span></td>
+                        <td class="col-today" style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
+                        <td style="text-align:center"><span class="badge badge-no">&#10005; No</span></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <div class="footer">
-        <span>Actualizado: <strong>2026-04-29 (Miércoles)</strong> &nbsp;|&nbsp; Semana de: 2026-04-28</span>
-        <span>Responsable: <strong>Hector Cifuentes</strong> &nbsp;|&nbsp; Solo días hábiles (Lun–Vie)</span>
+        <span>Generado automáticamente &mdash; <strong>Jueves 30 de Abril 2026</strong></span>
+        <span>Semana: 2026-04-28 | Responsable: <strong>Hector Cifuentes</strong></span>
     </div>
 </div>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

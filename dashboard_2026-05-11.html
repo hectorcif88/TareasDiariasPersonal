@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Tareas — Hector Cifuentes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#0f1117; color:#e2e8f0; min-height:100vh; }
+
+  /* Header */
+  .header { background:linear-gradient(135deg,#1a1f2e 0%,#16213e 100%); border-bottom:1px solid #2d3748; padding:28px 48px; display:flex; justify-content:space-between; align-items:center; }
+  .header-left h1 { font-size:22px; font-weight:700; color:#fff; letter-spacing:-0.3px; }
+  .header-left p { font-size:13px; color:#718096; margin-top:4px; }
+  .header-right { text-align:right; }
+  .header-right .date { font-size:13px; color:#a0aec0; }
+  .header-right .week { font-size:12px; color:#4a5568; margin-top:2px; }
+  .logo { width:36px; height:36px; background:linear-gradient(135deg,#667eea,#764ba2); border-radius:8px; display:inline-flex; align-items:center; justify-content:center; margin-right:14px; vertical-align:middle; }
+  .logo svg { width:20px; height:20px; fill:#fff; }
+
+  /* Stats bar */
+  .stats-bar { background:#1a1f2e; border-bottom:1px solid #2d3748; padding:16px 48px; display:flex; gap:40px; }
+  .stat { display:flex; align-items:center; gap:10px; }
+  .stat-num { font-size:24px; font-weight:700; }
+  .stat-label { font-size:12px; color:#718096; line-height:1.3; }
+  .stat.total .stat-num { color:#fff; }
+  .stat.curso .stat-num { color:#63b3ed; }
+  .stat.pendiente .stat-num { color:#f6ad55; }
+  .stat.finalizado .stat-num { color:#68d391; }
+  .stat.pausa .stat-num { color:#a0aec0; }
+
+  /* Main */
+  .main { padding:32px 48px; }
+  .section-title { font-size:11px; font-weight:600; color:#4a5568; text-transform:uppercase; letter-spacing:1.2px; margin-bottom:16px; }
+
+  /* Table */
+  .table-wrap { background:#1a1f2e; border-radius:12px; border:1px solid #2d3748; overflow:hidden; }
+  table { width:100%; border-collapse:collapse; }
+  thead th { background:#151924; padding:12px 16px; text-align:left; font-size:11px; font-weight:600; color:#4a5568; text-transform:uppercase; letter-spacing:0.8px; white-space:nowrap; }
+  tbody tr { border-top:1px solid #232b3e; transition:background 0.15s; }
+  tbody tr:hover { background:#1f2637; }
+  tbody td { padding:14px 16px; font-size:13px; vertical-align:middle; }
+  .col-id { color:#4a5568; font-size:11px; width:40px; }
+  .col-desc { color:#cbd5e0; line-height:1.45; max-width:340px; }
+  .col-date { color:#718096; font-size:12px; white-space:nowrap; }
+  .col-day { text-align:center; font-size:12px; white-space:nowrap; }
+
+  /* Estado badges */
+  .badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; white-space:nowrap; }
+  .badge-curso { background:#1a365d; color:#63b3ed; }
+  .badge-pendiente { background:#744210; color:#f6ad55; }
+  .badge-finalizado { background:#1c4532; color:#68d391; }
+  .badge-pausa { background:#2d3748; color:#a0aec0; }
+
+  /* Realizado dot */
+  .dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+  .dot-si { background:#68d391; }
+  .dot-no { background:#4a5568; }
+  .col-realizado { text-align:center; }
+  .realizado-cell { display:flex; align-items:center; justify-content:center; gap:6px; font-size:12px; color:#718096; }
+
+  /* Day columns */
+  .day-si { color:#68d391; font-weight:600; }
+  .day-no { color:#2d3748; }
+
+  /* Footer */
+  .footer { margin-top:32px; display:flex; justify-content:space-between; align-items:center; padding:0 2px; }
+  .footer-note { font-size:11px; color:#2d3748; }
+  .updated { font-size:11px; color:#4a5568; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="display:flex;align-items:center;">
+    <div class="logo">
+      <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+    </div>
+    <div class="header-left">
+      <h1>Seguimiento de Tareas</h1>
+      <p>Hector Cifuentes · LATAM Operations</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="date">Lunes 11 de Mayo, 2026</div>
+    <div class="week">Semana del 28 de Abril · Actualización diaria</div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat total"><div class="stat-num">8</div><div class="stat-label">Total<br>Tareas</div></div>
+  <div class="stat curso"><div class="stat-num">5</div><div class="stat-label">En<br>Curso</div></div>
+  <div class="stat pendiente"><div class="stat-num">1</div><div class="stat-label">Pen-<br>diente</div></div>
+  <div class="stat finalizado"><div class="stat-num">1</div><div class="stat-label">Finali-<br>zado</div></div>
+  <div class="stat pausa"><div class="stat-num">1</div><div class="stat-label">En<br>Pausa</div></div>
+</div>
+
+<div class="main">
+  <div class="section-title">Lista de tareas activas</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="col-id">#</th>
+          <th>Descripción</th>
+          <th>Vencimiento</th>
+          <th>Estado</th>
+          <th style="text-align:center;">Realizado hoy</th>
+          <th style="text-align:center;">Mié 29</th>
+          <th style="text-align:center;">Jue 30</th>
+          <th style="text-align:center;">Lun 4</th>
+          <th style="text-align:center;">Mar 5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-id">4</td>
+          <td class="col-desc">Compartir con Glen la confirmación por email sobre el OTA TSMCC solicitado por Eddie</td>
+          <td class="col-date">22 Abr 2026</td>
+          <td><span class="badge badge-finalizado">Finalizado</span></td>
+          <td class="col-realizado"><div class="realizado-cell"><span class="dot dot-no"></span>No</div></td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+        </tr>
+        <tr>
+          <td class="col-id">5</td>
+          <td class="col-desc">Solicitar de nuevo el stream faltante de El Salvador y hacer seguimiento para recibirlo</td>
+          <td class="col-date">24 Abr 2026</td>
+          <td><span class="badge badge-curso">En curso</span></td>
+          <td class="col-realizado"><div class="realizado-cell"><span class="dot dot-no"></span>No</div></td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+        </tr>
+        <tr>
+          <td class="col-id">6</td>
+          <td class="col-desc">Insistir con Eduardo para obtener la confirmación del loader customization</td>
+          <td class="col-date">24 Abr 2026</td>
+          <td><span class="badge badge-curso">En curso</span></td>
+          <td class="col-realizado"><div class="realizado-cell"><span class="dot dot-no"></span>No</div></td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+        </tr>
+        <tr>
+          <td class="col-id">7</td>
+          <td class="col-desc">Investigar con el ingeniero de Axitos el porcentaje de avance del SBI en Paraguay y reportar a Glen</td>
+          <td class="col-date">22 Abr 2026</td>
+          <td><span class="badge badge-curso">En curso</span></td>
+          <td class="col-realizado"><div class="realizado-cell"><span class="dot dot-no"></span>No</div></td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+        </tr>
+        <tr>
+          <td class="col-id">10</td>
+          <td class="col-desc">Monitorear el field test de Guatemala (PG2142) hasta su finalización prevista y reportar cualquier issue</td>
+          <td class="col-date">30 Abr 2026</td>
+          <td><span class="badge badge-curso">En curso</span></td>
+          <td class="col-realizado"><div class="realizado-cell"><span class="dot dot-no"></span>No</div></td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+        </tr>
+        <tr>
+          <td class="col-id">14</td>
+          <td class="col-desc">Cargar en el sample el nuevo firmware de debug para el issue de 'no internet/crash' del PG2141 y probarlo</td>
+          <td class="col-date">22 Abr 2026</td>
+          <td><span class="badge badge-curso">En curso</span></td>
+          <td class="col-realizado"><div class="realizado-cell"><span class="dot dot-no"></span>No</div></td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+        </tr>
+        <tr>
+          <td class="col-id">17</td>
+          <td class="col-desc">Hacer seguimiento con Tigo Honduras para obtener evidencias/logs de las 'no-social-media calls' y abrir ticket JIRA</td>
+          <td class="col-date">TBD</td>
+          <td><span class="badge badge-pendiente">Pendiente</span></td>
+          <td class="col-realizado"><div class="realizado-cell"><span class="dot dot-no"></span>No</div></td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+        </tr>
+        <tr>
+          <td class="col-id">18</td>
+          <td class="col-desc">Seguimiento homologación PG2142 Nicaragua</td>
+          <td class="col-date">30 Abr 2026</td>
+          <td><span class="badge badge-pausa">Pausa</span></td>
+          <td class="col-realizado"><div class="realizado-cell"><span class="dot dot-no"></span>No</div></td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+          <td class="col-day day-no">–</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <div class="footer-note">Generado automáticamente · Semana: 2026-04-28 · Responsable: Hector Cifuentes</div>
+    <div class="updated">Última actualización: 2026-05-11 (Lunes)</div>
+  </div>
+</div>
+
+</body>
+</html>

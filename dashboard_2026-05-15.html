@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seguimiento Semanal - Hector Cifuentes | Viernes 15 Mayo 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #1a2a3a; }
+  header {
+    background: linear-gradient(135deg, #1F3864 0%, #2E5DA8 100%);
+    color: white; padding: 28px 40px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+  .header-left h1 { font-size: 1.7rem; font-weight: 700; }
+  .header-left p { font-size: 0.92rem; opacity: 0.82; margin-top: 4px; }
+  .header-right .date { font-size: 1.05rem; font-weight: 600; text-align:right; }
+  .header-right .week { font-size: 0.82rem; opacity: 0.75; margin-top: 3px; text-align:right; }
+  .logo-bar { background: #162d56; padding: 7px 40px; }
+  .logo-bar span { color: #7eb8f7; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; }
+  .kpi-strip { display: flex; gap: 18px; padding: 22px 40px; background: #e8eef6; border-bottom: 1px solid #ccd6e8; }
+  .kpi-card { background: white; border-radius: 10px; padding: 14px 22px; flex: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.07); border-left: 4px solid #2E5DA8; }
+  .kpi-card.green { border-left-color: #1e8a45; }
+  .kpi-card.orange { border-left-color: #d97706; }
+  .kpi-card.red { border-left-color: #c0392b; }
+  .kpi-label { font-size: 0.72rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 5px; }
+  .kpi-value { font-size: 2rem; font-weight: 800; color: #1F3864; }
+  .kpi-sub { font-size: 0.75rem; color: #9ca3af; margin-top: 2px; }
+  .main { padding: 28px 40px; }
+  .section-title { font-size: 1.05rem; font-weight: 700; color: #1F3864; margin-bottom: 14px; padding-bottom: 6px; border-bottom: 2px solid #2E5DA8; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); font-size: 0.87rem; }
+  thead tr { background: #1F3864; color: white; }
+  thead th { padding: 12px 14px; text-align: left; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  tbody tr:nth-child(even) { background: #f7f9fc; }
+  tbody tr:hover { background: #eaf1fb; }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid #e8eef6; vertical-align: middle; }
+  .td-num { text-align: center; color: #6b7280; font-weight: 600; width: 38px; }
+  .td-desc { max-width: 340px; line-height: 1.45; }
+  .td-date { white-space: nowrap; color: #555; font-size: 0.82rem; }
+  .td-center { text-align: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.74rem; font-weight: 600; }
+  .badge-finalizado { background: #d1fae5; color: #065f46; }
+  .badge-encurso { background: #dbeafe; color: #1e40af; }
+  .badge-pendiente { background: #fee2e2; color: #991b1b; }
+  .badge-pausa { background: #fef3c7; color: #92400e; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+  .dot-si { background: #22c55e; }
+  .dot-no { background: #e5e7eb; border: 1px solid #d1d5db; }
+  .day-col { text-align: center; font-size: 0.78rem; color: #6b7280; }
+  .day-col.current { color: #1F3864; font-weight: 700; }
+  .tbd { color: #f59e0b; font-style: italic; font-size: 0.8rem; }
+  .footer { background: #1F3864; color: rgba(255,255,255,0.65); text-align: center; padding: 14px; font-size: 0.76rem; margin-top: 32px; }
+  .footer strong { color: white; }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <h1>&#128203; Seguimiento Semanal de Tareas</h1>
+    <p>Responsable: <strong>Hector Cifuentes</strong> &nbsp;&middot;&nbsp; Semana LATAM: 2026-04-28</p>
+  </div>
+  <div class="header-right">
+    <div class="date">Viernes, 15 de Mayo 2026</div>
+    <div class="week">Semana 20 &middot; Actualizaci&oacute;n diaria</div>
+  </div>
+</header>
+<div class="logo-bar">
+  <span>&#9654; Kaon &nbsp;&middot;&nbsp; Reporte ejecutivo &nbsp;&middot;&nbsp; Confidencial</span>
+</div>
+<div class="kpi-strip">
+  <div class="kpi-card">
+    <div class="kpi-label">Total Tareas</div>
+    <div class="kpi-value">8</div>
+    <div class="kpi-sub">en seguimiento activo</div>
+  </div>
+  <div class="kpi-card green">
+    <div class="kpi-label">Finalizadas</div>
+    <div class="kpi-value">1</div>
+    <div class="kpi-sub">completadas</div>
+  </div>
+  <div class="kpi-card" style="border-left-color:#2E5DA8">
+    <div class="kpi-label">En Curso</div>
+    <div class="kpi-value">5</div>
+    <div class="kpi-sub">en progreso activo</div>
+  </div>
+  <div class="kpi-card red">
+    <div class="kpi-label">Pendiente</div>
+    <div class="kpi-value">1</div>
+    <div class="kpi-sub">sin iniciar</div>
+  </div>
+  <div class="kpi-card orange">
+    <div class="kpi-label">En Pausa</div>
+    <div class="kpi-value">1</div>
+    <div class="kpi-sub">en espera</div>
+  </div>
+</div>
+<div class="main">
+  <div class="section-title">&#128205; Detalle de Tareas &mdash; Seguimiento por D&iacute;a</div>
+  <table>
+    <thead>
+      <tr>
+        <th class="td-num">#</th>
+        <th>Descripci&oacute;n</th>
+        <th>Vencimiento</th>
+        <th>Estado</th>
+        <th>Hoy (Vie 15)</th>
+        <th class="day-col">Mi&eacute; 29</th>
+        <th class="day-col">Jue 30</th>
+        <th class="day-col">Lun 4</th>
+        <th class="day-col">Mar 5</th>
+        <th class="day-col">Lun 11</th>
+        <th class="day-col">Mar 12</th>
+        <th class="day-col">Mi&eacute; 13</th>
+        <th class="day-col current">Jue 14</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-num">4</td>
+        <td class="td-desc">Compartir con Glen la confirmaci&oacute;n por email sobre el OTA TSMCC solicitado por Eddie</td>
+        <td class="td-date">2026-04-22</td>
+        <td><span class="badge badge-finalizado">Finalizado</span></td>
+        <td class="td-center"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+      </tr>
+      <tr>
+        <td class="td-num">5</td>
+        <td class="td-desc">Solicitar de nuevo el stream faltante de El Salvador y hacer seguimiento para recibirlo</td>
+        <td class="td-date">2026-04-24</td>
+        <td><span class="badge badge-encurso">En curso</span></td>
+        <td class="td-center"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+      </tr>
+      <tr>
+        <td class="td-num">6</td>
+        <td class="td-desc">Insistir con Eduardo para obtener la confirmaci&oacute;n del loader customization</td>
+        <td class="td-date">2026-04-24</td>
+        <td><span class="badge badge-encurso">En curso</span></td>
+        <td class="td-center"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+      </tr>
+      <tr>
+        <td class="td-num">7</td>
+        <td class="td-desc">Investigar con el ingeniero de Axitos el porcentaje de avance del SBI en Paraguay y reportar a Glen</td>
+        <td class="td-date">2026-04-22</td>
+        <td><span class="badge badge-encurso">En curso</span></td>
+        <td class="td-center"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+      </tr>
+      <tr>
+        <td class="td-num">10</td>
+        <td class="td-desc">Monitorear el field test de Guatemala (PG2142) hasta su finalizaci&oacute;n prevista y reportar cualquier issue</td>
+        <td class="td-date">2026-04-30</td>
+        <td><span class="badge badge-encurso">En curso</span></td>
+        <td class="td-center"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+      </tr>
+      <tr>
+        <td class="td-num">14</td>
+        <td class="td-desc">Cargar en el sample el nuevo firmware de debug para el issue de 'no internet/crash' del PG2141 y probarlo</td>
+        <td class="td-date">2026-04-22</td>
+        <td><span class="badge badge-encurso">En curso</span></td>
+        <td class="td-center"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+      </tr>
+      <tr>
+        <td class="td-num">17</td>
+        <td class="td-desc">Hacer seguimiento con Tigo Honduras para obtener evidencias/logs de las 'no-social-media calls' y abrir ticket JIRA</td>
+        <td class="td-date tbd">TBD</td>
+        <td><span class="badge badge-pendiente">Pendiente</span></td>
+        <td class="td-center"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+      </tr>
+      <tr>
+        <td class="td-num">18</td>
+        <td class="td-desc">Seguimiento homologaci&oacute;n PG2142 Nicaragua</td>
+        <td class="td-date">2026-04-30</td>
+        <td><span class="badge badge-pausa">Pausa</span></td>
+        <td class="td-center"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td><td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+        <td class="day-col"><span class="dot dot-no"></span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="footer">
+  <strong>Kaon &mdash; Seguimiento Semanal LATAM</strong> &nbsp;&middot;&nbsp;
+  Generado: Viernes 15 Mayo 2026 &nbsp;&middot;&nbsp; Responsable: Hector Cifuentes &nbsp;&middot;&nbsp; Semana: 2026-04-28
+</div>
+</body>
+</html>
